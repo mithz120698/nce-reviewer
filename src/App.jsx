@@ -90,11 +90,11 @@ function Main() {
   useEffect(() => saveStore(store), [store])
 
   const start = (testIds, mode, opts = {}) => {
-    let qs = TESTS.filter((t) => testIds.includes(t.id)).flatMap((t) => t.questions)
+    let qs = opts.qs || TESTS.filter((t) => testIds.includes(t.id)).flatMap((t) => t.questions)
     if (opts.onlyMissed) qs = qs.filter((q) => store.missed?.[q.id])
     if (opts.shuffle) qs = shuffle(qs)
     if (!qs.length) return
-    setSession({ qs, mode, idx: 0, answers: {}, revealed: {}, startedAt: Date.now(), done: false, label: opts.label, limit: opts.limit || null })
+    setSession({ qs, mode, idx: opts.idx || 0, answers: {}, revealed: {}, startedAt: Date.now(), done: false, label: opts.label, limit: opts.limit || null })
   }
 
   const finish = (sess) => {
@@ -119,6 +119,69 @@ function Main() {
   return <Home store={store} start={start} onReset={() => setStore({})} />
 }
 
+const TEST_ROMAN = ['I', 'II', 'III', 'IV']
+const strip = (s) => (s || '').replace(/__|\^|[{}]/g, '').toLowerCase()
+const SEARCH_INDEX = TESTS.flatMap((t, ti) =>
+  t.questions.map((q) => ({
+    q,
+    hay: strip(
+      [`test ${TEST_ROMAN[ti]}`, t.name, `q${q.number}`, `#${q.number}`, q.instruction, q.text, ...Object.values(q.choices || {}), explanations[q.id]].join(' \n '),
+    ),
+  })),
+)
+
+function snippet(q) {
+  const s = strip(q.text || q.instruction || '').replace(/\s+/g, ' ')
+  if (!s) return 'Picture question'
+  return s.length > 110 ? s.slice(0, 110) + '…' : s
+}
+
+function Search({ onOpen }) {
+  const [query, setQuery] = useState('')
+  const terms = strip(query).split(/\s+/).filter(Boolean)
+  const matches = (e, w) => {
+    const num = w.match(/^(?:q|#)(\d+)$/)
+    return num ? e.q.number === Number(num[1]) : e.hay.includes(w)
+  }
+  const results = terms.length ? SEARCH_INDEX.filter((e) => terms.every((w) => matches(e, w))).map((e) => e.q) : []
+
+  return (
+    <section className="search">
+      <div className="search-box">
+        <span aria-hidden="true">🔍</span>
+        <input
+          type="search"
+          placeholder="Search questions, choices, or topics (e.g. volume, idiom, abstract q5)"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          aria-label="Search questions"
+        />
+      </div>
+      {terms.length > 0 && (
+        <div className="search-results">
+          <div className="search-meta muted">
+            {results.length ? `${results.length} match${results.length === 1 ? '' : 'es'}` : 'No matches'}
+            {results.length > 1 && (
+              <button className="link" onClick={() => onOpen(results, 0)}>Practice all {results.length} →</button>
+            )}
+          </div>
+          <ul>
+            {results.slice(0, 25).map((q, i) => (
+              <li key={q.id}>
+                <button onClick={() => onOpen(results, i)}>
+                  <span className="tag">{q.testName} · Q{q.number}</span>
+                  <span>{snippet(q)}</span>
+                </button>
+              </li>
+            ))}
+          </ul>
+          {results.length > 25 && <p className="muted small-note">Showing first 25. Refine your search to see more.</p>}
+        </div>
+      )}
+    </section>
+  )
+}
+
 function Home({ store, start, onReset }) {
   const [mode, setMode] = useState('practice')
   const [doShuffle, setDoShuffle] = useState(false)
@@ -134,6 +197,8 @@ function Home({ store, start, onReset }) {
         <h1>NCE Reviewer</h1>
         <p className="sub">{total} practice questions across {TESTS.length} tests. Pick a test, answer, and check yourself.</p>
       </header>
+
+      <Search onOpen={(qs, idx) => start([], 'practice', { qs, idx, label: 'Search results' })} />
 
       <section className="controls">
         <div className="seg" role="radiogroup" aria-label="Mode">
