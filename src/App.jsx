@@ -74,9 +74,82 @@ function ThemeToggle() {
   )
 }
 
+const HELP = [
+  ['Modes', [
+    ['Practice', 'See if you got it right, plus an explanation, right after each answer.'],
+    ['Exam', 'Answer everything first and get your score at the end, like the real test.'],
+    ['Study', 'Browse questions with the answers and explanations already shown. Good for a first read-through.'],
+  ]],
+  ['Options', [
+    ['Countdown', 'Pick a time limit before starting. When time runs out, the test submits itself and blank answers count as wrong.'],
+    ['Shuffle', 'Mixes up the question order so you remember concepts, not positions.'],
+    ['Search', 'Type a word or topic (e.g. "volume", "idiom") or a test and number (e.g. "abstract q5") to find questions fast.'],
+  ]],
+  ['Tracking', [
+    ['Mastered', 'A question is mastered when your latest answer to it was right. Get it wrong later and it goes back to review.'],
+    ['Missed questions', 'Collects everything you got wrong so you can retry just those.'],
+    ['Bookmarks', 'Tap ☆ (or press S) on any question to save it for later.'],
+    ['Focus next', 'Points you to the test where you have the fewest mastered questions.'],
+    ['Backup', 'Progress lives in this browser. Use "Download backup" to move it to another phone or computer.'],
+  ]],
+  ['Keyboard', [
+    ['A–E', 'Choose an answer'],
+    ['← →', 'Previous / next question'],
+    ['S', 'Bookmark the current question'],
+  ]],
+  ['Offline', [
+    ['No internet?', 'After your first visit, the reviewer works offline. On a phone, use "Add to Home Screen" to install it like an app.'],
+  ]],
+]
+
+function Help({ onClose }) {
+  useEffect(() => {
+    const onKey = (e) => e.key === 'Escape' && onClose()
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [onClose])
+  return (
+    <div className="modal-backdrop" onClick={onClose}>
+      <div className="modal" role="dialog" aria-modal="true" aria-labelledby="help-title" onClick={(e) => e.stopPropagation()}>
+        <div className="modal-head">
+          <h2 id="help-title">How to use the reviewer</h2>
+          <button className="icon-btn" onClick={onClose} aria-label="Close help">✕</button>
+        </div>
+        {HELP.map(([section, rows]) => (
+          <div key={section} className="help-sec">
+            <h3>{section}</h3>
+            <dl>
+              {rows.map(([k, v]) => (
+                <div key={k}>
+                  <dt>{k}</dt>
+                  <dd>{v}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        ))}
+        <p className="muted help-foot">
+          Test-taking tips from the reviewer: make a study plan, start with the easy parts, read carefully, and stay calm. Good luck!
+        </p>
+      </div>
+    </div>
+  )
+}
+
+function HelpButton() {
+  const [open, setOpen] = useState(false)
+  return (
+    <>
+      <button className="help-toggle" onClick={() => setOpen(true)} aria-label="Help" title="Help">?</button>
+      {open && <Help onClose={() => setOpen(false)} />}
+    </>
+  )
+}
+
 export default function App() {
   return (
     <>
+      <HelpButton />
       <ThemeToggle />
       <Main />
     </>
@@ -92,9 +165,21 @@ function Main() {
   const start = (testIds, mode, opts = {}) => {
     let qs = opts.qs || TESTS.filter((t) => testIds.includes(t.id)).flatMap((t) => t.questions)
     if (opts.onlyMissed) qs = qs.filter((q) => store.missed?.[q.id])
+    if (opts.onlyBookmarked) qs = qs.filter((q) => store.bookmarks?.[q.id])
     if (opts.shuffle) qs = shuffle(qs)
     if (!qs.length) return
-    setSession({ qs, mode, idx: opts.idx || 0, answers: {}, revealed: {}, startedAt: Date.now(), done: false, label: opts.label, limit: opts.limit || null })
+    const study = mode === 'study'
+    setSession({
+      qs, mode, idx: opts.idx || 0, answers: {}, revealed: {}, startedAt: Date.now(), done: false,
+      label: opts.label, limit: study ? null : opts.limit || null, reviewing: study,
+    })
+  }
+
+  const toggleBookmark = (id) => {
+    const bookmarks = { ...(store.bookmarks || {}) }
+    if (bookmarks[id]) delete bookmarks[id]
+    else bookmarks[id] = true
+    setStore({ ...store, bookmarks })
   }
 
   // Per-question stats: { tries, right, last: true|false, at }
@@ -146,8 +231,9 @@ function Main() {
   }
 
   if (session?.done) return <Results session={session} onHome={() => setSession(null)} onReview={() => setSession({ ...session, done: false, reviewing: true, idx: 0 })} />
-  if (session) return <Quiz session={session} setSession={setSession} onFinish={finish} onQuit={quit} />
-  return <Home store={store} start={start} onReset={() => setStore({})} />
+  if (session)
+    return <Quiz session={session} setSession={setSession} onFinish={finish} onQuit={quit} bookmarks={store.bookmarks || {}} onBookmark={toggleBookmark} />
+  return <Home store={store} start={start} setStore={setStore} />
 }
 
 const TEST_ROMAN = ['I', 'II', 'III', 'IV']
@@ -297,12 +383,93 @@ function Progress({ progress, onOpen }) {
   )
 }
 
-function Home({ store, start, onReset }) {
+function Backup({ store, setStore }) {
+  const [msg, setMsg] = useState('')
+  const exportData = () => {
+    const blob = new Blob([JSON.stringify({ app: 'nce-reviewer', version: 1, savedAt: new Date().toISOString(), data: store }, null, 1)], { type: 'application/json' })
+    const a = document.createElement('a')
+    a.href = URL.createObjectURL(blob)
+    a.download = `nce-reviewer-progress-${new Date().toISOString().slice(0, 10)}.json`
+    a.click()
+    URL.revokeObjectURL(a.href)
+    setMsg('Backup downloaded.')
+  }
+  const importData = async (e) => {
+    const file = e.target.files?.[0]
+    e.target.value = ''
+    if (!file) return
+    try {
+      const parsed = JSON.parse(await file.text())
+      const data = parsed?.app === 'nce-reviewer' ? parsed.data : null
+      if (!data || typeof data !== 'object') throw new Error('bad file')
+      const clean = {
+        progress: typeof data.progress === 'object' ? data.progress : {},
+        missed: typeof data.missed === 'object' ? data.missed : {},
+        bookmarks: typeof data.bookmarks === 'object' ? data.bookmarks : {},
+        history: Array.isArray(data.history) ? data.history.slice(0, 20) : [],
+      }
+      if (!window.confirm('Replace your current progress with this backup?')) return
+      setStore(clean)
+      setMsg('Progress restored.')
+    } catch {
+      setMsg("That file isn't an NCE Reviewer backup.")
+    }
+  }
+  const reset = () => {
+    if (window.confirm('Clear all progress, bookmarks, and history? This cannot be undone.')) {
+      setStore({})
+      setMsg('Progress cleared.')
+    }
+  }
+  return (
+    <section className="backup">
+      <h2>Your data</h2>
+      <p className="muted">Progress is saved in this browser only. Download a backup to move it to another device.</p>
+      <div className="backup-actions">
+        <button onClick={exportData}>⬇ Download backup</button>
+        <label className="file-btn">
+          ⬆ Restore backup
+          <input type="file" accept="application/json,.json" onChange={importData} />
+        </label>
+        <button className="danger" onClick={reset}>Clear progress</button>
+      </div>
+      {msg && <p className="backup-msg" role="status">{msg}</p>}
+    </section>
+  )
+}
+
+function Focus({ progress, start }) {
+  const tried = TESTS.some((t) => t.questions.some((q) => progress[q.id]))
+  if (!tried) return null
+  const scored = TESTS.map((t) => {
+    const n = t.questions.length
+    const m = t.questions.filter((q) => progress[q.id]?.last).length
+    const r = t.questions.filter((q) => progress[q.id] && !progress[q.id].last)
+    return { t, n, m, r, ratio: m / n }
+  }).sort((a, b) => a.ratio - b.ratio)
+  const w = scored[0]
+  if (w.m === w.n) return <p className="focus done">🎉 You've mastered every question. Try a timed full mock exam!</p>
+  return (
+    <div className="focus">
+      <div>
+        <span className="eyebrow">Focus next</span>
+        <strong>{w.t.name}</strong>
+        <span className="muted"> · {w.m}/{w.n} mastered{w.r.length ? `, ${w.r.length} to review` : ''}</span>
+      </div>
+      <button className="primary-sm" onClick={() => (w.r.length ? start([], 'practice', { qs: w.r, label: `${w.t.name}: review` }) : start([w.t.id], 'practice', { label: w.t.name }))}>
+        {w.r.length ? 'Review these' : 'Practice'} →
+      </button>
+    </div>
+  )
+}
+
+function Home({ store, start, setStore }) {
   const [mode, setMode] = useState('practice')
   const [doShuffle, setDoShuffle] = useState(false)
   const [minutes, setMinutes] = useState('')
   const limit = Number(minutes) > 0 ? Math.round(Number(minutes) * 60) : null
   const missedCount = Object.keys(store.missed || {}).length
+  const bookmarkCount = Object.keys(store.bookmarks || {}).length
   const total = TESTS.reduce((n, t) => n + t.questions.length, 0)
 
   return (
@@ -316,6 +483,7 @@ function Home({ store, start, onReset }) {
       <Search onOpen={(qs, idx) => start([], 'practice', { qs, idx, label: 'Search results' })} />
 
       <Progress progress={store.progress || {}} onOpen={(qs, idx, label) => start([], 'practice', { qs, idx, label })} />
+      <Focus progress={store.progress || {}} start={start} />
 
       <section className="controls">
         <div className="seg" role="radiogroup" aria-label="Mode">
@@ -325,13 +493,16 @@ function Home({ store, start, onReset }) {
           <button className={mode === 'exam' ? 'on' : ''} onClick={() => setMode('exam')}>
             Exam <span>score at the end</span>
           </button>
+          <button className={mode === 'study' ? 'on' : ''} onClick={() => setMode('study')}>
+            Study <span>answers shown</span>
+          </button>
         </div>
         <label className="check">
           <input type="checkbox" checked={doShuffle} onChange={(e) => setDoShuffle(e.target.checked)} /> Shuffle questions
         </label>
       </section>
 
-      <section className="timer-pick">
+      <section className={mode === 'study' ? 'timer-pick off' : 'timer-pick'} aria-disabled={mode === 'study'}>
         <span className="label">Countdown</span>
         {[['', 'Off'], ['15', '15m'], ['30', '30m'], ['60', '1h']].map(([v, l]) => (
           <button key={l} className={minutes === v ? 'chip on' : 'chip'} onClick={() => setMinutes(v)}>{l}</button>
@@ -363,13 +534,21 @@ function Home({ store, start, onReset }) {
           <strong>Missed questions</strong>
           <span className="meta">{missedCount ? `${missedCount} to retry` : 'Nothing missed yet'}</span>
         </button>
+        <button
+          className="card wide bm"
+          disabled={!bookmarkCount}
+          onClick={() => start(TESTS.map((t) => t.id), mode, { onlyBookmarked: true, shuffle: doShuffle, label: 'Bookmarked', limit })}
+        >
+          <span className="num">Saved</span>
+          <strong>Bookmarked</strong>
+          <span className="meta">{bookmarkCount ? `${bookmarkCount} saved` : 'Tap ☆ on a question to save it'}</span>
+        </button>
       </section>
 
       {store.history?.length > 0 && (
         <section className="history">
           <div className="history-head">
             <h2>Recent attempts</h2>
-            <button className="link" onClick={onReset}>Clear progress</button>
           </div>
           <ul>
             {store.history.map((h, i) => (
@@ -383,6 +562,8 @@ function Home({ store, start, onReset }) {
         </section>
       )}
 
+      <Backup store={store} setStore={setStore} />
+
       <footer className="foot">
         Content from the PSHS System NCE Reviewer (2024), a free publication of the PSHS Admissions Office. Used with permission.
       </footer>
@@ -390,7 +571,7 @@ function Home({ store, start, onReset }) {
   )
 }
 
-function Quiz({ session, setSession, onFinish, onQuit }) {
+function Quiz({ session, setSession, onFinish, onQuit: quitNow, bookmarks, onBookmark }) {
   const { qs, idx, answers, revealed, mode, reviewing } = session
   const q = qs[idx]
   const [now, setNow] = useState(Date.now())
@@ -412,6 +593,11 @@ function Quiz({ session, setSession, onFinish, onQuit }) {
   const picked = answers[q.id]
   const isRevealed = reviewing || (mode === 'practice' && revealed[q.id])
   const answeredCount = Object.keys(answers).length
+  const study = mode === 'study'
+  const onQuit = () => {
+    if (!reviewing && mode === 'exam' && answeredCount > 0 && !window.confirm('Leave this exam? Your answers so far will not be saved.')) return
+    quitNow()
+  }
 
   const pick = (l) => {
     if (isRevealed) return
@@ -423,9 +609,11 @@ function Quiz({ session, setSession, onFinish, onQuit }) {
 
   useEffect(() => {
     const onKey = (e) => {
-      if (e.target.tagName === 'INPUT') return
+      if (e.target.tagName === 'INPUT' || document.querySelector('.modal')) return
+      if (e.metaKey || e.ctrlKey || e.altKey) return
       const k = e.key.toUpperCase()
       if (LETTERS.includes(k)) pick(k)
+      else if (k === 'S') onBookmark(q.id)
       else if (e.key === 'ArrowRight') go(idx + 1)
       else if (e.key === 'ArrowLeft') go(idx - 1)
     }
@@ -457,7 +645,18 @@ function Quiz({ session, setSession, onFinish, onQuit }) {
       <article className="qcard">
         <div className="qhead">
           <span className="tag">{q.testName}</span>
-          <span className="muted">Q{q.number} · {idx + 1} of {qs.length}</span>
+          <span className="qhead-right">
+            <span className="muted">Q{q.number} · {idx + 1} of {qs.length}</span>
+            <button
+              className={bookmarks[q.id] ? 'star on' : 'star'}
+              onClick={() => onBookmark(q.id)}
+              aria-pressed={!!bookmarks[q.id]}
+              aria-label={bookmarks[q.id] ? 'Remove bookmark' : 'Bookmark this question'}
+              title={bookmarks[q.id] ? 'Remove bookmark (S)' : 'Bookmark (S)'}
+            >
+              {bookmarks[q.id] ? '★' : '☆'}
+            </button>
+          </span>
         </div>
 
         {q.instruction && <p className="instruction"><Rich text={q.instruction} /></p>}
@@ -480,7 +679,8 @@ function Quiz({ session, setSession, onFinish, onQuit }) {
           ))}
         </div>
 
-        {isRevealed && (
+        {study && <p className="verdict ok">Answer: {q.answer}</p>}
+        {isRevealed && !study && (
           <p className={picked === q.answer ? 'verdict ok' : 'verdict no'}>
             {picked === q.answer ? 'Correct!' : picked ? `Not quite. Answer: ${q.answer}` : `Skipped. Answer: ${q.answer}`}
           </p>
@@ -526,7 +726,7 @@ function Quiz({ session, setSession, onFinish, onQuit }) {
           )
         })}
       </div>
-      <p className="hint muted">Tip: press A–E to answer, ← → to move.</p>
+      <p className="hint muted">Tip: press A–E to answer, ← → to move, S to bookmark.</p>
     </div>
   )
 }
