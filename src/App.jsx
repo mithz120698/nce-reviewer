@@ -56,7 +56,34 @@ function fmtTime(sec) {
   return `${m}:${String(s).padStart(2, '0')}`
 }
 
+function ThemeToggle() {
+  const [theme, setTheme] = useState(() => document.documentElement.dataset.theme || 'light')
+  useEffect(() => {
+    document.documentElement.dataset.theme = theme
+    try {
+      localStorage.setItem('nce-theme', theme)
+    } catch {
+      /* storage unavailable */
+    }
+  }, [theme])
+  const dark = theme === 'dark'
+  return (
+    <button className="theme-toggle" onClick={() => setTheme(dark ? 'light' : 'dark')} aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'} title={dark ? 'Light mode' : 'Dark mode'}>
+      {dark ? '☀️' : '🌙'}
+    </button>
+  )
+}
+
 export default function App() {
+  return (
+    <>
+      <ThemeToggle />
+      <Main />
+    </>
+  )
+}
+
+function Main() {
   const [store, setStore] = useState(loadStore)
   const [session, setSession] = useState(null)
 
