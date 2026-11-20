@@ -97,25 +97,56 @@ function Main() {
     setSession({ qs, mode, idx: opts.idx || 0, answers: {}, revealed: {}, startedAt: Date.now(), done: false, label: opts.label, limit: opts.limit || null })
   }
 
+  // Per-question stats: { tries, right, last: true|false, at }
+  const recordProgress = (sess, onlyAnswered) => {
+    const progress = { ...(store.progress || {}) }
+    sess.qs.forEach((q) => {
+      const a = sess.answers[q.id]
+      if (onlyAnswered && !a) return
+      const p = progress[q.id] || { tries: 0, right: 0 }
+      const ok = a === q.answer
+      progress[q.id] = { tries: p.tries + 1, right: p.right + (ok ? 1 : 0), last: ok, at: Date.now() }
+    })
+    return progress
+  }
+
+  const quit = () => {
+    // Keep progress from a practice session left midway.
+    if (session && !session.reviewing && session.mode === 'practice' && Object.keys(session.answers).length) {
+      const missed = { ...(store.missed || {}) }
+      session.qs.forEach((q) => {
+        const a = session.answers[q.id]
+        if (!a) return
+        if (a === q.answer) delete missed[q.id]
+        else missed[q.id] = true
+      })
+      setStore({ ...store, missed, progress: recordProgress(session, true) })
+    }
+    setSession(null)
+  }
+
   const finish = (sess) => {
     const missed = { ...(store.missed || {}) }
     let correct = 0
+    // In practice mode, skipped questions don't count against you.
+    const practice = sess.mode === 'practice'
     sess.qs.forEach((q) => {
       if (sess.answers[q.id] === q.answer) {
         correct++
         delete missed[q.id]
-      } else missed[q.id] = true
+      } else if (!practice || sess.answers[q.id]) missed[q.id] = true
     })
+    const progress = recordProgress(sess, practice)
     const history = [
       { label: sess.label, mode: sess.mode, correct, total: sess.qs.length, secs: Math.round((Date.now() - sess.startedAt) / 1000), at: Date.now() },
       ...(store.history || []),
     ].slice(0, 20)
-    setStore({ ...store, missed, history })
+    setStore({ ...store, missed, history, progress })
     setSession({ ...sess, done: true, correct, endedAt: Date.now() })
   }
 
   if (session?.done) return <Results session={session} onHome={() => setSession(null)} onReview={() => setSession({ ...session, done: false, reviewing: true, idx: 0 })} />
-  if (session) return <Quiz session={session} setSession={setSession} onFinish={finish} onQuit={() => setSession(null)} />
+  if (session) return <Quiz session={session} setSession={setSession} onFinish={finish} onQuit={quit} />
   return <Home store={store} start={start} onReset={() => setStore({})} />
 }
 
@@ -182,6 +213,90 @@ function Search({ onOpen }) {
   )
 }
 
+function statusOf(p) {
+  if (!p) return 'new'
+  return p.last ? 'mastered' : 'review'
+}
+
+function Progress({ progress, onOpen }) {
+  const [open, setOpen] = useState(false)
+  const all = TESTS.flatMap((t) => t.questions)
+  const tried = all.filter((q) => progress[q.id])
+  const mastered = tried.filter((q) => progress[q.id].last).length
+  const tries = tried.reduce((n, q) => n + progress[q.id].tries, 0)
+  const rights = tried.reduce((n, q) => n + progress[q.id].right, 0)
+  const pct = Math.round((mastered / all.length) * 100)
+
+  return (
+    <section className="tracker">
+      <div className="tracker-head">
+        <div className="ring" style={{ '--p': pct }} aria-label={`${pct}% mastered`}>
+          <span>{pct}%</span>
+        </div>
+        <div className="tracker-stats">
+          <h2>Your progress</h2>
+          <div className="stats">
+            <div><strong>{tried.length}</strong><span>of {all.length} tried</span></div>
+            <div><strong>{mastered}</strong><span>mastered</span></div>
+            <div><strong>{tried.length - mastered}</strong><span>to review</span></div>
+            <div><strong>{tries ? Math.round((rights / tries) * 100) : 0}%</strong><span>accuracy</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div className="test-bars">
+        {TESTS.map((t) => {
+          const n = t.questions.length
+          const m = t.questions.filter((q) => statusOf(progress[q.id]) === 'mastered').length
+          const r = t.questions.filter((q) => statusOf(progress[q.id]) === 'review').length
+          return (
+            <div key={t.id} className="test-bar">
+              <span>{t.name}</span>
+              <div className="stack" title={`${m} mastered, ${r} to review, ${n - m - r} not tried`}>
+                <div className="m" style={{ width: `${(m / n) * 100}%` }} />
+                <div className="r" style={{ width: `${(r / n) * 100}%` }} />
+              </div>
+              <strong>{m}/{n}</strong>
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="legend muted">
+        <span><i className="m" /> Mastered (last answer right)</span>
+        <span><i className="r" /> To review</span>
+        <span><i /> Not tried</span>
+        <button className="link" onClick={() => setOpen((o) => !o)}>{open ? 'Hide' : 'Show'} question map</button>
+      </div>
+
+      {open && (
+        <div className="qmap">
+          {TESTS.map((t) => (
+            <div key={t.id}>
+              <p className="qmap-title">{t.name}</p>
+              <div className="qmap-grid">
+                {t.questions.map((q, i) => {
+                  const p = progress[q.id]
+                  return (
+                    <button
+                      key={q.id}
+                      className={`cell ${statusOf(p)}`}
+                      onClick={() => onOpen(t.questions, i, t.name)}
+                      title={p ? `Q${q.number}: ${p.right}/${p.tries} correct` : `Q${q.number}: not tried`}
+                    >
+                      {q.number}
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+  )
+}
+
 function Home({ store, start, onReset }) {
   const [mode, setMode] = useState('practice')
   const [doShuffle, setDoShuffle] = useState(false)
@@ -199,6 +314,8 @@ function Home({ store, start, onReset }) {
       </header>
 
       <Search onOpen={(qs, idx) => start([], 'practice', { qs, idx, label: 'Search results' })} />
+
+      <Progress progress={store.progress || {}} onOpen={(qs, idx, label) => start([], 'practice', { qs, idx, label })} />
 
       <section className="controls">
         <div className="seg" role="radiogroup" aria-label="Mode">
