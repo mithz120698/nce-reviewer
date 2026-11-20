@@ -67,7 +67,7 @@ export default function App() {
     if (opts.onlyMissed) qs = qs.filter((q) => store.missed?.[q.id])
     if (opts.shuffle) qs = shuffle(qs)
     if (!qs.length) return
-    setSession({ qs, mode, idx: 0, answers: {}, revealed: {}, startedAt: Date.now(), done: false, label: opts.label })
+    setSession({ qs, mode, idx: 0, answers: {}, revealed: {}, startedAt: Date.now(), done: false, label: opts.label, limit: opts.limit || null })
   }
 
   const finish = (sess) => {
@@ -95,6 +95,8 @@ export default function App() {
 function Home({ store, start, onReset }) {
   const [mode, setMode] = useState('practice')
   const [doShuffle, setDoShuffle] = useState(false)
+  const [minutes, setMinutes] = useState('')
+  const limit = Number(minutes) > 0 ? Math.round(Number(minutes) * 60) : null
   const missedCount = Object.keys(store.missed || {}).length
   const total = TESTS.reduce((n, t) => n + t.questions.length, 0)
 
@@ -120,15 +122,25 @@ function Home({ store, start, onReset }) {
         </label>
       </section>
 
+      <section className="timer-pick">
+        <span className="label">Countdown</span>
+        {[['', 'Off'], ['15', '15m'], ['30', '30m'], ['60', '1h']].map(([v, l]) => (
+          <button key={l} className={minutes === v ? 'chip on' : 'chip'} onClick={() => setMinutes(v)}>{l}</button>
+        ))}
+        <label className="custom">
+          <input type="number" min="1" max="600" placeholder="Custom" value={minutes} onChange={(e) => setMinutes(e.target.value)} /> min
+        </label>
+      </section>
+
       <section className="grid">
         {TESTS.map((t, i) => (
-          <button key={t.id} className="card" onClick={() => start([t.id], mode, { shuffle: doShuffle, label: t.name })}>
+          <button key={t.id} className="card" onClick={() => start([t.id], mode, { shuffle: doShuffle, label: t.name, limit })}>
             <span className="num">Test {['I', 'II', 'III', 'IV'][i]}</span>
             <strong>{t.name}</strong>
             <span className="meta">{t.questions.length} questions</span>
           </button>
         ))}
-        <button className="card wide" onClick={() => start(TESTS.map((t) => t.id), mode, { shuffle: doShuffle, label: 'Full mock exam' })}>
+        <button className="card wide" onClick={() => start(TESTS.map((t) => t.id), mode, { shuffle: doShuffle, label: 'Full mock exam', limit })}>
           <span className="num">All tests</span>
           <strong>Full mock exam</strong>
           <span className="meta">{total} questions</span>
@@ -136,7 +148,7 @@ function Home({ store, start, onReset }) {
         <button
           className="card wide alt"
           disabled={!missedCount}
-          onClick={() => start(TESTS.map((t) => t.id), mode, { onlyMissed: true, shuffle: doShuffle, label: 'Missed questions' })}
+          onClick={() => start(TESTS.map((t) => t.id), mode, { onlyMissed: true, shuffle: doShuffle, label: 'Missed questions', limit })}
         >
           <span className="num">Redo</span>
           <strong>Missed questions</strong>
@@ -163,7 +175,7 @@ function Home({ store, start, onReset }) {
       )}
 
       <footer className="foot">
-        Content from the PSHS System NCE Reviewer (2024), a free publication of the PSHS Admissions Office. For personal study only.
+        Content from the PSHS System NCE Reviewer (2024), a free publication of the PSHS Admissions Office. Used with permission.
       </footer>
     </div>
   )
@@ -181,6 +193,12 @@ function Quiz({ session, setSession, onFinish, onQuit }) {
     return () => clearInterval(t)
   }, [reviewing])
   useEffect(() => setShowPage(false), [idx])
+
+  const elapsed = Math.round((now - session.startedAt) / 1000)
+  const remaining = session.limit ? Math.max(0, session.limit - elapsed) : null
+  useEffect(() => {
+    if (!reviewing && remaining === 0) onFinish({ ...session, timedOut: true })
+  }, [remaining, reviewing]) // eslint-disable-line react-hooks/exhaustive-deps
 
   const picked = answers[q.id]
   const isRevealed = reviewing || (mode === 'practice' && revealed[q.id])
@@ -218,7 +236,11 @@ function Quiz({ session, setSession, onFinish, onQuit }) {
       <div className="topbar">
         <button className="link" onClick={onQuit}>← Home</button>
         <span className="muted">{session.label}</span>
-        {!reviewing && <span className="timer">{fmtTime(Math.round((now - session.startedAt) / 1000))}</span>}
+        {!reviewing && (
+          <span className={remaining !== null && remaining <= 60 ? 'timer low' : 'timer'} title={remaining !== null ? 'Time left' : 'Time elapsed'}>
+            {remaining !== null ? `⏳ ${fmtTime(remaining)}` : fmtTime(elapsed)}
+          </span>
+        )}
       </div>
 
       <div className="progress"><div style={{ width: `${((idx + 1) / qs.length) * 100}%` }} /></div>
@@ -318,6 +340,7 @@ function Results({ session, onHome, onReview }) {
       <div className="result">
         <p className="eyebrow">{session.label}</p>
         <div className="score">{correct}<span>/{qs.length}</span></div>
+        {session.timedOut && <p className="timeup">Time's up! Unanswered questions count as wrong.</p>}
         <p className="sub">{pct}% · {fmtTime(Math.round((session.endedAt - session.startedAt) / 1000))}</p>
         <div className="bars">
           {byTest.map(([name, v]) => (

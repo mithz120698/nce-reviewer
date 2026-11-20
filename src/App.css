@@ -89,3 +89,13 @@
 .explain { margin-top: 12px; background: var(--accent-soft); border-left: 4px solid var(--accent); border-radius: 10px; padding: 12px 14px; }
 .explain strong { font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: .06em; }
 .explain p { margin: 6px 0 0; line-height: 1.6; white-space: pre-line; }
+
+.timer-pick { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 20px; }
+.timer-pick .label { font-size: 14px; color: var(--muted); margin-right: 4px; }
+.chip { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 6px 14px; font-size: 14px; font-weight: 600; }
+.chip.on { background: var(--accent); border-color: var(--accent); color: #fff; }
+.custom { display: flex; align-items: center; gap: 6px; font-size: 14px; color: var(--muted); }
+.custom input { width: 84px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
+.timer.low { color: var(--no); animation: pulse 1s infinite; }
+@keyframes pulse { 50% { opacity: 0.5; } }
+.timeup { color: var(--no); font-weight: 700; margin: 12px 0 0; }
