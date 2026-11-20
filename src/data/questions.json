@@ -1,0 +1,1382 @@
+{
+ "tests": [
+  {
+   "id": 1,
+   "name": "Quantitative Ability",
+   "questions": [
+    {
+     "id": "t1-q1",
+     "number": 1,
+     "testName": "Quantitative Ability",
+     "page": "h08.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q1.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t1-q2",
+     "number": 2,
+     "testName": "Quantitative Ability",
+     "page": "h08.png",
+     "instruction": null,
+     "text": "If 3^2 = 3 × 3 = 9, and 3^4 = 3 x 3 x 3 x 3 = 81, then which of the following is equal to 10^5 + 10^7?",
+     "choices": {
+      "A": "10^12",
+      "B": "10^35",
+      "C": "100^12",
+      "D": "10,100,000",
+      "E": "11,000,000"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t1-q3",
+     "number": 3,
+     "testName": "Quantitative Ability",
+     "page": "h08.png",
+     "instruction": null,
+     "text": "Mathon went to Inkhorn Bookstore where he got a discount of ₱15 from a book that was marked 20% off. Then, he went to Lofty Bookstore to check out one of their limited edition books that is now discounted at 30%. If Mathon got a discount on the book from the Lofty Bookstore for the same amount as the original price of the book he got from Inkhorn Bookstore, how much is the difference between the two books' original prices?",
+     "choices": {
+      "A": "₱75",
+      "B": "₱175",
+      "C": "₱250",
+      "D": "₱325",
+      "E": "₱600"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t1-q4",
+     "number": 4,
+     "testName": "Quantitative Ability",
+     "page": "h09.png",
+     "instruction": null,
+     "text": "Basket A, composed of blue and green balls, has a total of 50 balls. Basket B, composed of orange and yellow balls, has a total of 120 balls. The ratio of blue to green balls in Basket A is 9:1, while the ratio of yellow to orange balls in Basket B is 5:7. Albert removed all the green balls from Basket A and all the yellow balls from Basket B to place in Basket C. What is the ratio of yellow to green balls in Basket C?",
+     "choices": {
+      "A": "1:5",
+      "B": "1:10",
+      "C": "9:1",
+      "D": "10:1",
+      "E": "5:1"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t1-q5",
+     "number": 5,
+     "testName": "Quantitative Ability",
+     "page": "h09.png",
+     "instruction": null,
+     "text": "If 2^1 = 2\n2^2 = 4\n2^3 = 8\nand 2^4 = 16, what must be the last digit of 2^27?",
+     "choices": {
+      "A": "2",
+      "B": "4",
+      "C": "6",
+      "D": "7",
+      "E": "8"
+     },
+     "figures": [],
+     "answer": "E"
+    },
+    {
+     "id": "t1-q6",
+     "number": 6,
+     "testName": "Quantitative Ability",
+     "page": "h09.png",
+     "instruction": null,
+     "text": "Prime numbers are defined as whole numbers greater than 1, and that can only be divided by 1 and themselves. For instance, 5 is a prime number since this can only be divided by 1 and 5, such as 5 divided by 1 is 5, while 5 divided by 5 is 1.\n\nHow many distinct prime number divisors does 72 have?",
+     "choices": {
+      "A": "0",
+      "B": "1",
+      "C": "2",
+      "D": "3",
+      "E": "4"
+     },
+     "figures": [],
+     "answer": "C"
+    },
+    {
+     "id": "t1-q7",
+     "number": 7,
+     "testName": "Quantitative Ability",
+     "page": "h10.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q7.png"
+     ],
+     "answer": "E"
+    },
+    {
+     "id": "t1-q8",
+     "number": 8,
+     "testName": "Quantitative Ability",
+     "page": "h10.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q8.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t1-q9",
+     "number": 9,
+     "testName": "Quantitative Ability",
+     "page": "h10.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q9.png"
+     ],
+     "answer": "A"
+    },
+    {
+     "id": "t1-q10",
+     "number": 10,
+     "testName": "Quantitative Ability",
+     "page": "h11.png",
+     "instruction": null,
+     "text": "Two radio stations A and B aired an advertisement (ad) of a certain product. This ad is aired in station A every 15 minutes, while in station B every 20 minutes. If the two radio stations simultaneously air the ad at 8:00 AM for the first time, how many times will this simultaneously airing of the ad happen from 9:00 AM to 5:30 PM?",
+     "choices": {
+      "A": "1",
+      "B": "8",
+      "C": "9",
+      "D": "10",
+      "E": "60"
+     },
+     "figures": [],
+     "answer": "C"
+    },
+    {
+     "id": "t1-q11",
+     "number": 11,
+     "testName": "Quantitative Ability",
+     "page": "h11.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q11.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t1-q12",
+     "number": 12,
+     "testName": "Quantitative Ability",
+     "page": "h12.png",
+     "instruction": null,
+     "text": "The volume of a rectangular solid can be computed by finding the product of its length (l), width (w), and height (h). What happens to the volume of a box if each l, w, and h are doubled?",
+     "choices": {
+      "A": "The volume of the box stays the same.",
+      "B": "The volume of the box becomes 2 times the original volume.",
+      "C": "The volume of the box becomes 4 times the original volume.",
+      "D": "The volume of the box becomes 6 times the original volume.",
+      "E": "The volume of the box becomes 8 times the original volume."
+     },
+     "figures": [],
+     "answer": "E"
+    },
+    {
+     "id": "t1-q13",
+     "number": 13,
+     "testName": "Quantitative Ability",
+     "page": "h12.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q13.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t1-q14",
+     "number": 14,
+     "testName": "Quantitative Ability",
+     "page": "h12.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q14.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t1-q15",
+     "number": 15,
+     "testName": "Quantitative Ability",
+     "page": "h13.png",
+     "instruction": null,
+     "text": "To determine the covered distance traveled by a vehicle at a given period, the average speed of the car must be multiplied by the time spent. For instance, a car that travels at a speed of 50 km/hr can cover 50 km in one hour.\n\nConsider two cars, A and B, started from the same place and at the same time. Car A traveled north at an average speed of 80 km/hr. Car B traveled north as well at an average speed of 120 km/hr. How far apart are the two cars (in km) if both cars traveled for 30 minutes?",
+     "choices": {
+      "A": "10",
+      "B": "20",
+      "C": "40",
+      "D": "60",
+      "E": "80"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t1-q16",
+     "number": 16,
+     "testName": "Quantitative Ability",
+     "page": "h13.png",
+     "instruction": null,
+     "text": "The minute hand of a wall clock is 5 cm long. How far (in cm) does the tip of the minute hand travel in 12 hours?",
+     "choices": {
+      "A": "10π",
+      "B": "120π",
+      "C": "240π",
+      "D": "360π",
+      "E": "720π"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t1-q17",
+     "number": 17,
+     "testName": "Quantitative Ability",
+     "page": "h13.png",
+     "instruction": null,
+     "text": "Jek and Pau went hiking. They started to climb at 6:51 AM and reached the summit on the same day at 2:27 PM. How long did they hike?",
+     "choices": {
+      "A": "9 hours and 18 minutes",
+      "B": "8 hours and 36 minutes",
+      "C": "7 hours and 36 minutes",
+      "D": "6 hours and 36 minutes",
+      "E": "4 hours and 24 minutes"
+     },
+     "figures": [],
+     "answer": "C"
+    },
+    {
+     "id": "t1-q18",
+     "number": 18,
+     "testName": "Quantitative Ability",
+     "page": "h14.png",
+     "instruction": null,
+     "text": "In an office, all documents are required to be printed on a letter-sized paper which is 8.5 inches by 11 inches, with a 1-inch margin on all sides. What is the area (in square inches) of the portion of the paper where printing is allowed? (Assume that printing at the back of the paper is not allowed.)",
+     "choices": {
+      "A": "58.5",
+      "B": "60",
+      "C": "65",
+      "D": "75",
+      "E": "93.5"
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t1-q19",
+     "number": 19,
+     "testName": "Quantitative Ability",
+     "page": "h14.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q19.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t1-q20",
+     "number": 20,
+     "testName": "Quantitative Ability",
+     "page": "h15.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t1-q20.png"
+     ],
+     "answer": "C"
+    }
+   ]
+  },
+  {
+   "id": 2,
+   "name": "Verbal Aptitude",
+   "questions": [
+    {
+     "id": "t2-q1",
+     "number": 1,
+     "testName": "Verbal Aptitude",
+     "page": "h16.png",
+     "instruction": null,
+     "text": "Choose the letter of the word that is spelled CORRECTLY.",
+     "choices": {
+      "A": "inoculate",
+      "B": "innoculate",
+      "C": "innocculate",
+      "D": "inoculate",
+      "E": "inocculatte"
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t2-q2",
+     "number": 2,
+     "testName": "Verbal Aptitude",
+     "page": "h16.png",
+     "instruction": "For items 2-3, choose the letter of the word that BEST completes the sentence.",
+     "text": "Kiefer was exhausted after a long day of performing the drills that his coach instructed. He was __________ to finally rest and sleep for the night.",
+     "choices": {
+      "A": "crestfallen",
+      "B": "elated",
+      "C": "exhilarated",
+      "D": "invigorated",
+      "E": "relieved"
+     },
+     "figures": [],
+     "answer": "E"
+    },
+    {
+     "id": "t2-q3",
+     "number": 3,
+     "testName": "Verbal Aptitude",
+     "page": "h16.png",
+     "instruction": "For items 2-3, choose the letter of the word that BEST completes the sentence.",
+     "text": "Sarah showed her __________ spirit when she stood up to the bully and defended her friend.",
+     "choices": {
+      "A": "aggressive",
+      "B": "courageous",
+      "C": "emphatic",
+      "D": "rebellious",
+      "E": "nonchalant"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t2-q4",
+     "number": 4,
+     "testName": "Verbal Aptitude",
+     "page": "h17.png",
+     "instruction": null,
+     "text": "The young woman, who is passionate about climate change, is considered a subversive by some members of the airline industry. The underlined word is CLOSEST in meaning to",
+     "choices": {
+      "A": "anarchist",
+      "B": "heretic",
+      "C": "terrorist",
+      "D": "traitor",
+      "E": "rebel"
+     },
+     "figures": [],
+     "answer": "E"
+    },
+    {
+     "id": "t2-q5",
+     "number": 5,
+     "testName": "Verbal Aptitude",
+     "page": "h17.png",
+     "instruction": null,
+     "text": "“The hidden dolls were very beautiful and made of costly materials like delicate porcelain and rich ivory.” The underlined word is CLOSEST in meaning to",
+     "choices": {
+      "A": "abundant",
+      "B": "complex",
+      "C": "fruitful",
+      "D": "pleasant",
+      "E": "wealthy"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q6",
+     "number": 6,
+     "testName": "Verbal Aptitude",
+     "page": "h17.png",
+     "instruction": "For items 6-9, choose the letter of the word that BEST expresses a relationship similar to that of the first word pair.",
+     "text": "Jupiter : planet :: Moon : __________",
+     "choices": {
+      "A": "asteroid",
+      "B": "galaxy",
+      "C": "nebula",
+      "D": "satellite",
+      "E": "star"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q7",
+     "number": 7,
+     "testName": "Verbal Aptitude",
+     "page": "h18.png",
+     "instruction": "For items 6-9, choose the letter of the word that BEST expresses a relationship similar to that of the first word pair.",
+     "text": "ball : bat :: tennis : __________",
+     "choices": {
+      "A": "club",
+      "B": "javelin",
+      "C": "pole",
+      "D": "racquet",
+      "E": "stick"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q8",
+     "number": 8,
+     "testName": "Verbal Aptitude",
+     "page": "h18.png",
+     "instruction": "For items 6-9, choose the letter of the word that BEST expresses a relationship similar to that of the first word pair.",
+     "text": "square : cube :: circle : __________",
+     "choices": {
+      "A": "oval",
+      "B": "sphere",
+      "C": "cylinder",
+      "D": "triangle",
+      "E": "rectangle"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t2-q9",
+     "number": 9,
+     "testName": "Verbal Aptitude",
+     "page": "h18.png",
+     "instruction": "For items 6-9, choose the letter of the word that BEST expresses a relationship similar to that of the first word pair.",
+     "text": "guitar : strings :: piano : __________",
+     "choices": {
+      "A": "keys",
+      "B": "frets",
+      "C": "hammers",
+      "D": "cymbals",
+      "E": "drumsticks"
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t2-q10",
+     "number": 10,
+     "testName": "Verbal Aptitude",
+     "page": "h18.png",
+     "instruction": "For items 10-11, choose the letter of the sentence that makes use of proper punctuation.",
+     "text": "",
+     "choices": {
+      "A": "“Did I not tell you,” her mother said, “that biking is not as hard as it looks”?",
+      "B": "“Did I not tell you,” her mother said, “that biking is not as hard as it looks?”",
+      "C": "“Did I not tell you”, her mother said, “that biking is not as hard as it looks?”",
+      "D": "“Did I not tell you,” her mother said, “That biking is not as hard as it looks”?",
+      "E": "“Did I not tell you,” her mother said, “That biking is not as hard as it looks?”"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t2-q11",
+     "number": 11,
+     "testName": "Verbal Aptitude",
+     "page": "h19.png",
+     "instruction": "For items 10-11, choose the letter of the sentence that makes use of proper punctuation.",
+     "text": "",
+     "choices": {
+      "A": "My favorite sports are basketball, volleyball, and boxing.",
+      "B": "My favorite sports are basketball, volleyball and boxing.",
+      "C": "My favorite sports are, basketball, volleyball, and boxing.",
+      "D": "My favorite sports are: basketball, volleyball, and boxing.",
+      "E": "My favorite sports are basketball; volleyball; and boxing."
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t2-q12",
+     "number": 12,
+     "testName": "Verbal Aptitude",
+     "page": "h19.png",
+     "instruction": "For items 12-14, choose the letter of the preposition or conjunction that will BEST complete each sentence.",
+     "text": "The boy is sad because his pet cat has been missing __________ last week.",
+     "choices": {
+      "A": "after",
+      "B": "by",
+      "C": "for",
+      "D": "from",
+      "E": "since"
+     },
+     "figures": [],
+     "answer": "E"
+    },
+    {
+     "id": "t2-q13",
+     "number": 13,
+     "testName": "Verbal Aptitude",
+     "page": "h19.png",
+     "instruction": "For items 12-14, choose the letter of the preposition or conjunction that will BEST complete each sentence.",
+     "text": "Julie walked to the park __________ his brother, __________ they played badminton for hours.",
+     "choices": {
+      "A": "to, when",
+      "B": "with, but",
+      "C": "with, and",
+      "D": "for, because",
+      "E": "and, because"
+     },
+     "figures": [],
+     "answer": "C"
+    },
+    {
+     "id": "t2-q14",
+     "number": 14,
+     "testName": "Verbal Aptitude",
+     "page": "h19.png",
+     "instruction": "For items 12-14, choose the letter of the preposition or conjunction that will BEST complete each sentence.",
+     "text": "Jenny was excited __________ her graduation celebration, but she was also nervous __________ the speech she had to deliver.",
+     "choices": {
+      "A": "about, about",
+      "B": "for, with",
+      "C": "at, in",
+      "D": "on, for",
+      "E": "in, about"
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t2-q15",
+     "number": 15,
+     "testName": "Verbal Aptitude",
+     "page": "h20.png",
+     "instruction": "For items 15-18, choose the letter of the underlined word or phrase that contains an error. If there is NO error, choose E.",
+     "text": "__The students__ (A) __had cleaned__ (B) __the laboratory instruments__ (C) __after conducting the experiment__ (D). __NO ERROR__ (E)",
+     "choices": {
+      "A": "The students",
+      "B": "had cleaned",
+      "C": "the laboratory instruments",
+      "D": "after conducting the experiment",
+      "E": "NO ERROR"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t2-q16",
+     "number": 16,
+     "testName": "Verbal Aptitude",
+     "page": "h20.png",
+     "instruction": "For items 15-18, choose the letter of the underlined word or phrase that contains an error. If there is NO error, choose E.",
+     "text": "__Even after the harvest,__ (A) __the farmers did not__ (B) __wanted to take a rest__ (C) __from working in the fields__ (D). __NO ERROR__ (E)",
+     "choices": {
+      "A": "Even after the harvest,",
+      "B": "the farmers did not",
+      "C": "wanted to take a rest",
+      "D": "from working in the fields",
+      "E": "NO ERROR"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q17",
+     "number": 17,
+     "testName": "Verbal Aptitude",
+     "page": "h20.png",
+     "instruction": "For items 15-18, choose the letter of the underlined word or phrase that contains an error. If there is NO error, choose E.",
+     "text": "Karen __had went__ (A) to the market __to buy food supplies,__ (B) but she __forgot__ (C) to bring her wallet __with her__ (D). __NO ERROR__ (E)",
+     "choices": {
+      "A": "had went",
+      "B": "to buy food supplies,",
+      "C": "forgot",
+      "D": "with her",
+      "E": "NO ERROR"
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t2-q18",
+     "number": 18,
+     "testName": "Verbal Aptitude",
+     "page": "h20.png",
+     "instruction": "For items 15-18, choose the letter of the underlined word or phrase that contains an error. If there is NO error, choose E.",
+     "text": "The teacher __asks__ (A) the students __if they understand__ (B) the concept, and then __she explained__ (C) it again __for clarification__ (D). __NO ERROR__ (E)",
+     "choices": {
+      "A": "asks",
+      "B": "if they understand",
+      "C": "she explained",
+      "D": "for clarification",
+      "E": "NO ERROR"
+     },
+     "figures": [],
+     "answer": "C"
+    },
+    {
+     "id": "t2-q19",
+     "number": 19,
+     "testName": "Verbal Aptitude",
+     "page": "h20.png",
+     "instruction": null,
+     "text": "The class president has a tendency to __sit on the fence__ and leave issues unresolved. The underlined phrase is an idiom that means \"to be __________.\"",
+     "choices": {
+      "A": "idle",
+      "B": "indecisive",
+      "C": "lazy",
+      "D": "lethargic",
+      "E": "negligent"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t2-q20",
+     "number": 20,
+     "testName": "Verbal Aptitude",
+     "page": "h21.png",
+     "instruction": null,
+     "text": "The girl took the scholarship opportunity because she knew that such chances come __once in a blue moon__. The underlined phrase is an idiom that means",
+     "choices": {
+      "A": "fortuitously",
+      "B": "improbably",
+      "C": "occasionally",
+      "D": "rarely",
+      "E": "unexpectedly"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q21",
+     "number": 21,
+     "testName": "Verbal Aptitude",
+     "page": "h21.png",
+     "instruction": null,
+     "text": "The examination was difficult but Trebor was able to ______________, so he got a high score.",
+     "choices": {
+      "A": "spill the beans",
+      "B": "bite the bullet",
+      "C": "burn the midnight oil",
+      "D": "hit the nail in the head",
+      "E": "make it a piece of cake"
+     },
+     "figures": [],
+     "answer": "C"
+    },
+    {
+     "id": "t2-q22",
+     "number": 22,
+     "testName": "Verbal Aptitude",
+     "page": "h21.png",
+     "instruction": "For items 22-23, arrange the sentences to form a coherent paragraph.",
+     "text": "1 Three years ago, my brother gave me a puppy.\n2 Bruno made me excited to go home from school.\n3 I would always find him patiently waiting by the door.\n4 Then we would play until it was time for dinner.\n5 I still remember that first day like it was just yesterday.\n6 I named him Bruno, because of his brown fur.",
+     "choices": {
+      "A": "4—3—2—5—6—1",
+      "B": "4—5—6—3—2—1",
+      "C": "1—6—5—4—3—2",
+      "D": "1—6—5—3—2—4",
+      "E": "1—6—5—3—4—2"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q23",
+     "number": 23,
+     "testName": "Verbal Aptitude",
+     "page": "h22.png",
+     "instruction": "For items 22-23, arrange the sentences to form a coherent paragraph.",
+     "text": "1 First, he cleared the area of weeds and rocks.\n2 Jason wanted to plant a garden in his backyard.\n3 After that, he carefully placed the seeds in the holes and covered them with soil.\n4 Then, he dug small holes in the soil for the seeds.\n5 Finally, he placed a fence around the garden to protect it from animals.\n6 Next, he watered the soil thoroughly.",
+     "choices": {
+      "A": "2—1—4—3—6—5",
+      "B": "2—1—3—4—5—6",
+      "C": "2—4—3—6—1—5",
+      "D": "2—6—1—4—3—5",
+      "E": "2—5—4—1—3—6"
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t2-q24",
+     "number": 24,
+     "testName": "Verbal Aptitude",
+     "page": "h23.png",
+     "instruction": "For items 24-30, read the following passages carefully and answer the questions.\n\nQuiapo is a labyrinth of stores that sells everything from the mundane to the arcane. In one of these shops, there was a doll-maker whose brand of magic was the sinister kind.\n\nHer dolls looked ordinary enough. Piles of plastic dolls with blinking blue or brown eyes were on display together with orange, purple, and white teddy bears, and pink pigs with curly tails.\n\nShe had a secret collection, however, hidden away at the back of the store. The hidden dolls were very beautiful and made of costly materials like delicate porcelain and rich ivory. Their most marvelous feature was their eyes. Each doll's eye was a precious gemstone. Each doll was unique. Not one was for sale.\n\nShe scanned the crowd.\n\nThere.\n\nThe doll-maker sensed the little girl. Alone. A street urchin. Yes. This one was ripe for the picking. With a wave of her hand, she beckoned the little girl to come over. Obediently, the child approached.\n\n\"What is it, lola\"?\n\nThe doll-maker smiled, whispered in the girl's ear, and drew back the curtains of the shop entrance. The girl stepped inside.\n\n-Excerpt from \"Doll Eyes\" by Eline Santos, https://artsandculture.google.com/story/3wURytX5oq1nKw",
+     "text": "What do you think would happen to the little girl?",
+     "choices": {
+      "A": "She would be sold to a syndicate.",
+      "B": "She would be turned over by the doll-maker to the DSWD.",
+      "C": "She would be given a doll by the doll-maker from her collection.",
+      "D": "She would be turned into one of the hidden dolls by the doll-maker.",
+      "E": "She would be adopted by the doll-maker and make her an apprentice."
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q25",
+     "number": 25,
+     "testName": "Verbal Aptitude",
+     "page": "h23.png",
+     "instruction": "For items 24-30, read the following passages carefully and answer the questions.\n\nQuiapo is a labyrinth of stores that sells everything from the mundane to the arcane. In one of these shops, there was a doll-maker whose brand of magic was the sinister kind.\n\nHer dolls looked ordinary enough. Piles of plastic dolls with blinking blue or brown eyes were on display together with orange, purple, and white teddy bears, and pink pigs with curly tails.\n\nShe had a secret collection, however, hidden away at the back of the store. The hidden dolls were very beautiful and made of costly materials like delicate porcelain and rich ivory. Their most marvelous feature was their eyes. Each doll's eye was a precious gemstone. Each doll was unique. Not one was for sale.\n\nShe scanned the crowd.\n\nThere.\n\nThe doll-maker sensed the little girl. Alone. A street urchin. Yes. This one was ripe for the picking. With a wave of her hand, she beckoned the little girl to come over. Obediently, the child approached.\n\n\"What is it, lola\"?\n\nThe doll-maker smiled, whispered in the girl's ear, and drew back the curtains of the shop entrance. The girl stepped inside.\n\n-Excerpt from \"Doll Eyes\" by Eline Santos, https://artsandculture.google.com/story/3wURytX5oq1nKw",
+     "text": "Mood is the overall atmosphere or feeling evoked in a piece of writing. Which word most strongly sets the mood of the given excerpt?",
+     "choices": {
+      "A": "alone",
+      "B": "arcane",
+      "C": "sinister",
+      "D": "mundane",
+      "E": "marvelous"
+     },
+     "figures": [],
+     "answer": "C"
+    },
+    {
+     "id": "t2-q26",
+     "number": 26,
+     "testName": "Verbal Aptitude",
+     "page": "h23.png",
+     "instruction": "For items 24-30, read the following passages carefully and answer the questions.\n\nQuiapo is a labyrinth of stores that sells everything from the mundane to the arcane. In one of these shops, there was a doll-maker whose brand of magic was the sinister kind.\n\nHer dolls looked ordinary enough. Piles of plastic dolls with blinking blue or brown eyes were on display together with orange, purple, and white teddy bears, and pink pigs with curly tails.\n\nShe had a secret collection, however, hidden away at the back of the store. The hidden dolls were very beautiful and made of costly materials like delicate porcelain and rich ivory. Their most marvelous feature was their eyes. Each doll's eye was a precious gemstone. Each doll was unique. Not one was for sale.\n\nShe scanned the crowd.\n\nThere.\n\nThe doll-maker sensed the little girl. Alone. A street urchin. Yes. This one was ripe for the picking. With a wave of her hand, she beckoned the little girl to come over. Obediently, the child approached.\n\n\"What is it, lola\"?\n\nThe doll-maker smiled, whispered in the girl's ear, and drew back the curtains of the shop entrance. The girl stepped inside.\n\n-Excerpt from \"Doll Eyes\" by Eline Santos, https://artsandculture.google.com/story/3wURytX5oq1nKw",
+     "text": "Based on the excerpt, what is the story's central message?",
+     "choices": {
+      "A": "Materialism conquers the innocent.",
+      "B": "Things are not always as they seem.",
+      "C": "Be careful when talking to strangers.",
+      "D": "Children should be protected by adults.",
+      "E": "When people show you who they are, believe them."
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t2-q27",
+     "number": 27,
+     "testName": "Verbal Aptitude",
+     "page": "h23.png",
+     "instruction": "The Industrial Revolution brought significant changes in manufacturing, transportation, and society as a whole. It began in Britain in the late 18th century and made a tremendous impact on the lives of the people, especially in Western countries because it resulted in massive urbanization. The steam engine invented by James Watt in 1755 is one of the notable advancements during the period because it revolutionized transportation by powering locomotives and steamships, leading to faster and more efficient travel. Additionally, the increased mechanization of production processes led to the growth of factories and urbanization as people migrated from rural areas to cities in search of employment opportunities.",
+     "text": "What is the meaning of \"urbanization\" as used in the passage?",
+     "choices": {
+      "A": "agricultural advancement",
+      "B": "expansion of cities",
+      "C": "migration of people",
+      "D": "rural development",
+      "E": "technological inventions"
+     },
+     "figures": [],
+     "answer": "B"
+    },
+    {
+     "id": "t2-q28",
+     "number": 28,
+     "testName": "Verbal Aptitude",
+     "page": "h24.png",
+     "instruction": "The Industrial Revolution brought significant changes in manufacturing, transportation, and society as a whole. It began in Britain in the late 18th century and made a tremendous impact on the lives of the people, especially in Western countries because it resulted in massive urbanization. The steam engine invented by James Watt in 1755 is one of the notable advancements during the period because it revolutionized transportation by powering locomotives and steamships, leading to faster and more efficient travel. Additionally, the increased mechanization of production processes led to the growth of factories and urbanization as people migrated from rural areas to cities in search of employment opportunities.",
+     "text": "What does the passage imply about the impact or effect of the steam engine on transportation during the Industrial Revolution?",
+     "choices": {
+      "A": "Use of locomotives declined.",
+      "B": "Transportation remains the same.",
+      "C": "People migrate to other cities.",
+      "D": "Travel became faster and more efficient.",
+      "E": "Profits for factories increased."
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q29",
+     "number": 29,
+     "testName": "Verbal Aptitude",
+     "page": "h24.png",
+     "instruction": "Marilou loved spending her weekends at the local library. She would often lose herself among the shelves, exploring various genres from adventure tales to mysteries. Her favorite spot was the cozy reading nook by the window, where she could immerse herself in her latest book and let her imagination wander. As she turned the pages of the novel she was reading, she couldn't help but feel grateful for the magical world books had opened up for her.",
+     "text": "\"Marilou loved to spend her weekends ______________.\"",
+     "choices": {
+      "A": "above the library",
+      "B": "around the library",
+      "C": "beside the library",
+      "D": "in the library",
+      "E": "on the library"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t2-q30",
+     "number": 30,
+     "testName": "Verbal Aptitude",
+     "page": "h24.png",
+     "instruction": "Marilou loved spending her weekends at the local library. She would often lose herself among the shelves, exploring various genres from adventure tales to mysteries. Her favorite spot was the cozy reading nook by the window, where she could immerse herself in her latest book and let her imagination wander. As she turned the pages of the novel she was reading, she couldn't help but feel grateful for the magical world books had opened up for her.",
+     "text": "Why does Marilou enjoy spending time at the library?",
+     "choices": {
+      "A": "Because she has a lot of free time.",
+      "B": "Because she wants to be alone.",
+      "C": "Because she enjoys exploring books.",
+      "D": "Because she has to review and study.",
+      "E": "Because she likes to stay in a quiet place."
+     },
+     "figures": [],
+     "answer": "C"
+    }
+   ]
+  },
+  {
+   "id": 3,
+   "name": "Scientific Ability",
+   "questions": [
+    {
+     "id": "t3-q1",
+     "number": 1,
+     "testName": "Scientific Ability",
+     "page": "h25.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q1.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t3-q2",
+     "number": 2,
+     "testName": "Scientific Ability",
+     "page": "h25.png",
+     "instruction": null,
+     "text": "Scientists are studying the effects of Variable X on the growth of tomato plants. They plant identical tomato seedlings in pots with the same soil and give them the same amount of water. They use a different fertilizer for four of the seedling groups and no fertilizer for the other group. What is Variable X in this experiment?",
+     "choices": {
+      "A": "The type of fertilizer used",
+      "B": "The initial size of the tomato seedlings",
+      "C": "The type of soil the plants are grown in",
+      "D": "The amount of water the plants receive",
+      "E": "The amount of sunlight the plants receive"
+     },
+     "figures": [],
+     "answer": "A"
+    },
+    {
+     "id": "t3-q3",
+     "number": 3,
+     "testName": "Scientific Ability",
+     "page": "h26.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q3.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t3-q4",
+     "number": 4,
+     "testName": "Scientific Ability",
+     "page": "h26.png",
+     "instruction": null,
+     "text": "Marvice wants to find out how the angle of a ramp affects the distance a skateboard travels. She has skateboards, a ramp, and measuring tape. What can she do to answer this question?",
+     "choices": {
+      "A": "Release the skateboard from different heights onto a flat surface and measure how far it rolls each time.",
+      "B": "Use different skateboards on the same ramp at different angles and measure how far each skateboard travels.",
+      "C": "Set the ramp at one angle and release the skateboards multiple times, measuring the distance traveled each time.",
+      "D": "Set the ramp at different angles and release the skateboard from the same starting point, measuring the distance traveled each time.",
+      "E": "Use the same skateboard and angle but change the surface the skateboard rolls on (carpet, tile, wood) and measure the distance traveled."
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t3-q5",
+     "number": 5,
+     "testName": "Scientific Ability",
+     "page": "h27.png",
+     "instruction": null,
+     "text": "Rey notices small brown flies gathering around fallen mango fruits in his backyard. What is the most likely role of these flies in the ecosystem?",
+     "choices": {
+      "A": "They are pollinators that help mango trees reproduce.",
+      "B": "They are producers that feed the other organisms in the ecosystem.",
+      "C": "They are parasites that harm mango trees and reduce food production.",
+      "D": "They are predators that feed on mango pests and increase food production.",
+      "E": "They are decomposers that break down the fruit and return nutrients to the soil."
+     },
+     "figures": [],
+     "answer": "E"
+    },
+    {
+     "id": "t3-q6",
+     "number": 6,
+     "testName": "Scientific Ability",
+     "page": "h27.png",
+     "instruction": null,
+     "text": "A 1500 g sample of seawater was evaporated and 50 g of salt remained. How many grams of the same sample must be evaporated to produce 10 g of salt?",
+     "choices": {
+      "A": "30",
+      "B": "100",
+      "C": "150",
+      "D": "300",
+      "E": "500"
+     },
+     "figures": [],
+     "answer": "D"
+    },
+    {
+     "id": "t3-q7",
+     "number": 7,
+     "testName": "Scientific Ability",
+     "page": "h27.png",
+     "instruction": null,
+     "text": "Bernard wants to test if the temperature of water affects how quickly sugar dissolves. He has 3 cups of water at different temperatures (hot, warm, cold) and sugar packets. Which set up will help him answer the question?",
+     "choices": {
+      "A": "Heat all the cups of water to the same temperature, then add sugar and see which one dissolves first.",
+      "B": "Stir the sugar into each cup of water for different amounts of time and see which one dissolved first.",
+      "C": "Use different types of sugar (white, brown, confectioner's) in each cup of water and observe which dissolves the fastest.",
+      "D": "Add different amounts of sugar to each cup of water at different temperatures and see how long it takes for each to dissolve completely.",
+      "E": "Add the same amount of sugar to each cup of water and stir them all for the same amount of time, then observe which one dissolves first."
+     },
+     "figures": [],
+     "answer": "E"
+    },
+    {
+     "id": "t3-q8",
+     "number": 8,
+     "testName": "Scientific Ability",
+     "page": "h28.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q8.png"
+     ],
+     "answer": "E"
+    },
+    {
+     "id": "t3-q9",
+     "number": 9,
+     "testName": "Scientific Ability",
+     "page": "h28.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q9.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t3-q10",
+     "number": 10,
+     "testName": "Scientific Ability",
+     "page": "h29.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q10.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t3-q11",
+     "number": 11,
+     "testName": "Scientific Ability",
+     "page": "h29.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q11.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t3-q12",
+     "number": 12,
+     "testName": "Scientific Ability",
+     "page": "h30.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q12.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t3-q13",
+     "number": 13,
+     "testName": "Scientific Ability",
+     "page": "h30.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q13.png"
+     ],
+     "answer": "E"
+    },
+    {
+     "id": "t3-q14",
+     "number": 14,
+     "testName": "Scientific Ability",
+     "page": "h31.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q14.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t3-q15",
+     "number": 15,
+     "testName": "Scientific Ability",
+     "page": "h31.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q15.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t3-q16",
+     "number": 16,
+     "testName": "Scientific Ability",
+     "page": "h32.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q16.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t3-q17",
+     "number": 17,
+     "testName": "Scientific Ability",
+     "page": "h33.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q17.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t3-q18",
+     "number": 18,
+     "testName": "Scientific Ability",
+     "page": "h33.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q18.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t3-q19",
+     "number": 19,
+     "testName": "Scientific Ability",
+     "page": "h34.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q19.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t3-q20",
+     "number": 20,
+     "testName": "Scientific Ability",
+     "page": "h34.png",
+     "instruction": null,
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t3-q20.png"
+     ],
+     "answer": "C"
+    }
+   ]
+  },
+  {
+   "id": 4,
+   "name": "Abstract Reasoning",
+   "questions": [
+    {
+     "id": "t4-q1",
+     "number": 1,
+     "testName": "Abstract Reasoning",
+     "page": "h35.png",
+     "instruction": "Which figure should come next?",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q1.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t4-q2",
+     "number": 2,
+     "testName": "Abstract Reasoning",
+     "page": "h35.png",
+     "instruction": "Which figure should come next?",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q2.png"
+     ],
+     "answer": "A"
+    },
+    {
+     "id": "t4-q3",
+     "number": 3,
+     "testName": "Abstract Reasoning",
+     "page": "h35.png",
+     "instruction": "Which figure should come next?",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q3.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t4-q4",
+     "number": 4,
+     "testName": "Abstract Reasoning",
+     "page": "h36.png",
+     "instruction": "Which figure should come next?",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q4.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t4-q5",
+     "number": 5,
+     "testName": "Abstract Reasoning",
+     "page": "h36.png",
+     "instruction": "Choose which figure is different.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q5.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t4-q6",
+     "number": 6,
+     "testName": "Abstract Reasoning",
+     "page": "h36.png",
+     "instruction": "Choose which figure is different.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q6.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t4-q7",
+     "number": 7,
+     "testName": "Abstract Reasoning",
+     "page": "h36.png",
+     "instruction": "Choose which figure is different.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q7.png"
+     ],
+     "answer": "E"
+    },
+    {
+     "id": "t4-q8",
+     "number": 8,
+     "testName": "Abstract Reasoning",
+     "page": "h36.png",
+     "instruction": "Choose which figure is different.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q8.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t4-q9",
+     "number": 9,
+     "testName": "Abstract Reasoning",
+     "page": "h37.png",
+     "instruction": "Choose which fits the figure.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q9.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t4-q10",
+     "number": 10,
+     "testName": "Abstract Reasoning",
+     "page": "h37.png",
+     "instruction": "Choose which fits the figure.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q10.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t4-q11",
+     "number": 11,
+     "testName": "Abstract Reasoning",
+     "page": "h37.png",
+     "instruction": "Choose which fits the figure.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q11.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t4-q12",
+     "number": 12,
+     "testName": "Abstract Reasoning",
+     "page": "h38.png",
+     "instruction": "Choose which fits the figure.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q12.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t4-q13",
+     "number": 13,
+     "testName": "Abstract Reasoning",
+     "page": "h38.png",
+     "instruction": "Choose the diagram where the dot could be positioned similarly to the one in the figure above.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q13.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t4-q14",
+     "number": 14,
+     "testName": "Abstract Reasoning",
+     "page": "h38.png",
+     "instruction": "Choose the diagram where the dot could be positioned similarly to the one in the figure above.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q14.png"
+     ],
+     "answer": "B"
+    },
+    {
+     "id": "t4-q15",
+     "number": 15,
+     "testName": "Abstract Reasoning",
+     "page": "h38.png",
+     "instruction": "Choose the diagram where the dot could be positioned similarly to the one in the figure above.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q15.png"
+     ],
+     "answer": "D"
+    },
+    {
+     "id": "t4-q16",
+     "number": 16,
+     "testName": "Abstract Reasoning",
+     "page": "h39.png",
+     "instruction": "Choose the diagram where the dot could be positioned similarly to the one in the figure above.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q16.png"
+     ],
+     "answer": "A"
+    },
+    {
+     "id": "t4-q17",
+     "number": 17,
+     "testName": "Abstract Reasoning",
+     "page": "h39.png",
+     "instruction": "Find the figure that completes the analogy.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q17.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t4-q18",
+     "number": 18,
+     "testName": "Abstract Reasoning",
+     "page": "h39.png",
+     "instruction": "Find the figure that completes the analogy.",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q18.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t4-q19",
+     "number": 19,
+     "testName": "Abstract Reasoning",
+     "page": "h40.png",
+     "instruction": "Which pattern will create the figure on the left?",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q19.png"
+     ],
+     "answer": "C"
+    },
+    {
+     "id": "t4-q20",
+     "number": 20,
+     "testName": "Abstract Reasoning",
+     "page": "h40.png",
+     "instruction": "Which pattern will create the figure on the left?",
+     "text": "",
+     "choices": null,
+     "figures": [
+      "t4-q20.png"
+     ],
+     "answer": "B"
+    }
+   ]
+  }
+ ]
+}
